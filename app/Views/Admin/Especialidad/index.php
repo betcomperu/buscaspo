@@ -31,7 +31,7 @@
 
     <div class="card-body">
         <div class="box-header with-border">
-            <a href="<?php echo base_url(); ?>/panel/nuevo" class="btn btn-primary"><i class="fa fa-plus-circle"></i> Ingresar Socio </a>
+            <a href="<?php echo base_url(); ?>/panel/nuevo" class="btn btn-primary"><i class="fa fa-plus-circle"></i> Ingresar Especialidad </a>
             <a href="<?php echo base_url(); ?>/usuarios/eliminados" class="btn btn-warning"><i class="fas fa-list-ol"></i> Eliminados
             </a>
             <div class="box-tools pull-right">
@@ -43,49 +43,27 @@
         ?>
 
         <div class="margin-top">
-            <table id="tablaSocios" class="table table-bordered table-striped" style="font-size: 12px;">
+            <table id="tablaEspecialidad" class="table table-bordered table-striped" style="font-size: 13px;">
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Foto</th>
-                        <th>DNI</th>
-                        <th>CMP</th>
-                        <th>Nombre</th>
-                        <th>Ap.Paterno</th>
-                        <th>Ap.Materno</th>
-                        <th>Teléfono</th>
-                        <th>Fec.Nac</th>
-                        <th>Domicilio</th>
-                        <th>Email</th>
-                        <th>RNE</th>
-                        <th>Tipo Socio</th>
                         <th>Especialidad</th>
                         <th>Estado</th>
-                        <th>Opciones</th>
+                        <th>Acciones</th>
                     </tr>
                 </thead>
+                
 
                 <tbody>
 
-                    <?php foreach ($socios as $dato) : ?>
+                    <?php foreach ($especialidades as $especialidad) : ?>
                         <tr>
-                            <td><?php echo $dato['idSocio']; ?></td>
-                            <td><?php echo $dato['foto']; ?></td>
-                            <td><?php echo $dato['dni']; ?></td>
-                            <td><?php echo $dato['CMP']; ?></td>
-                            <td><?php echo $dato['nombre']; ?></td>
-                            <td><?php echo $dato['apPaterno']; ?></td>
-                            <td><?php echo $dato['apMaterno']; ?></td>
-                            <td><?php echo $dato['telef']; ?></td>
-                            <td><?php echo $dato['fecNac']; ?></td>
-                            <td><?php echo $dato['domicilio']; ?></td>
-                            <td><?php echo $dato['email']; ?></td>
-                            <td><?php echo $dato['RNE']; ?></td>
-                            <td><?php echo $dato['tipoSocio']; ?></td>
-                            <td><?php echo $dato['especialidad']; ?></td>
-                            <td><?php echo $dato['condicion']; ?></td>
+                            <td><?php echo $especialidad['idEspecialidad']; ?></td>
+                            <td><?php echo $especialidad['descripcion']; ?></td>
+                            <td><?php echo $especialidad['sitReg']; ?></td>
+                           
 
-                            <td>
+                           <td>
                                
                                 <div class="btn-group">
                                     <button type="button" class="btn btn-primary">Acción</button>
@@ -93,7 +71,7 @@
                                         <span class="sr-only">Toggle Dropdown</span>
                                     </button>
                                     <div class="dropdown-menu" role="menu">
-                                        <a class="dropdown-item" href="<?= base_url('Usuarios/edit/' . $dato['idSocio']) ?>">Ver</a>
+                                        <a class="dropdown-item" href="<?= base_url('Especialidad/edit/' . $especialidad['idEspecialidad']) ?>">Ver</a>
                                         <a class="dropdown-item" href="#">Editar</a>
                                         <a class="dropdown-item" href="#">Eliminar</a>
                                         
@@ -108,22 +86,10 @@
                 <tfoot>
                     <tr>
                     <tr>
-                        <th>ID</th>
-                        <th>DNI</th>
-                        <th>Foto</th>
-                        <th>CMP</th>
-                        <th>Nombre</th>
-                        <th>Ap.Paterno</th>
-                        <th>Ap.Materno</th>
-                        <th>Teléfono</th>
-                        <th>Fec.Nac</th>
-                        <th>Domicilio</th>
-                        <th>Email</th>
-                        <th>RNE</th>
-                        <th>Tipo Socio</th>
+                    <th>ID</th>
                         <th>Especialidad</th>
                         <th>Estado</th>
-                        <th>Opciones</th>
+                        <th>Acciones</th>
                     </tr>
                 </tfoot>
             </table>
@@ -133,7 +99,7 @@
 
         <?= $this->section('scripts') ?>
         <script>
-            var table = $('#tablaSocios').DataTable({
+            var table = $('#tablaEspecialidad').DataTable({
                 "dom": 'Bfrtip',
                 "buttons": [
                     'pageLength',

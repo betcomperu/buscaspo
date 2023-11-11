@@ -23,10 +23,18 @@ class EspecialidadModel extends Model
     protected $deletedField  = 'deleted_at';
 
     // Validation
-    protected $validationRules      = [];
-    protected $validationMessages   = [];
+    protected $reglas    = [
+        'descripcion' => 'required'
+        
+       ];
+    protected $reglasmensajes   = [
+        'descripcion' => [
+            
+            'required' => 'El campo descripción es obligatorio'
+        ]
+    ];
     protected $skipValidation       = false;
-    protected $cleanValidationRules = true;
+    protected $cleanValidationRules = false;
 
     // Callbacks
     protected $allowCallbacks = true;
