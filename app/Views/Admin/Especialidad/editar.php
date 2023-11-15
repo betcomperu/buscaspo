@@ -9,9 +9,6 @@
 <?= $this->endSection() ?>
 
 <?= $this->section('contenido') ?>
-Aquí está el código formateado con los botones del formulario alineados:
-
-```html
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <div class="content-header">
@@ -29,9 +26,7 @@ Aquí está el código formateado con los botones del formulario alineados:
             </div><!-- /.row -->
         </div><!-- /.container-fluid -->
     </div>
-
     <div class="swal" data-swal="<?= session()->get('registrado') ?>"></div>
-
     <?php if (session()->getFlashdata('error')) : ?>
         <div class="alert alert-danger">
             <?= session()->getFlashdata('error') ?>
@@ -41,39 +36,38 @@ Aquí está el código formateado con los botones del formulario alineados:
     <div class="card-body">
         <div class="box-header with-border">
             <a href="<?php echo base_url(); ?>panel/especialidades" class="btn btn-primary"><i class="fa fa-plus-circle"></i> Ver Especialidades </a>
-            <a href="<?php echo base_url(); ?>panel/especialidades/eliminados" class="btn btn-warning"><i class="fas fa-list-ol"></i> Ver Eliminados </a>
+            <a href="<?php echo base_url(); ?>panel/especialidades/eliminados" class="btn btn-warning"><i class="fas fa-list-ol"></i> Ver Eliminados
+            </a>
             <div class="box-tools pull-right">
                 <br>
             </div>
         </div>
 
-        <form action="<?php echo base_url(); ?>panel/especialidades/grabar" method="post" enctype="multipart/form-data">
-            <div class="col-6">
-                <label for="especialidad" class="form-label">Especialidad</label>
-                <input type="text" class="form-control" id="especialidad" name="descripcion" placeholder="Ingrese su especialidad" value="<?= old('descripcion') ?>">
-                <p class="text text-danger"><?= session('errors.descripcion') ?></p>
-            </div><br>
 
-            <div class="col-6 espacio-extra">
-                <label for="estado" class="form-label">Estado</label>
-                <select class="form-control" id="sitReg" name="sitReg" value="<?= old('sitReg') ?>">
-                    <option selected>Seleccione su estado</option>
-                    <option value="1">Activo</option>
-                    <option value="0">Inactivo</option>
-                </select>
-                <p class="text text-danger"><?= session('modelErrors.sitReg.required') ?></p>
-            </div>
-
-            <div class="box-header with-border">
-                <button type="submit" class="btn btn-primary">Registrar</button>
-                <a href="<?php echo base_url();?>panel/especialidades/" class="btn btn-danger" role="button">Cancelar</a>
-            </div>
-        </form>
+       
+<form action="<?php echo base_url(); ?>panel/especialidades/grabar" method="post" enctype="multipart/form-data>
+    <div class="col-6">
+        <label for="especialidad" class="form-label">Especialidad</label>
+        <input type="text" class="form-control" id="especialidad" name="descripcion" placeholder="Ingrese su especialidad" value="<?= $especialidad['descripcion'] ?>">
+        <p class="text text-danger"><?= session('errors.descripcion') ?></p>
+      
+    </div><br>
+  
+    <div class="col-6 espacio-extra"> 
+        <label for="estado" class="form-label">Estado</label>
+        <select class="form-control" id="sitReg" name= "sitReg" value="<?= old('sitReg') ?>">
+            <option selected>Seleccione su estado</option>
+            <option value="1">Activo</option>
+            <option value="0">Inactivo</option>
+        </select>
+        <p class="text text-danger"><?= session('modelErrors.sitReg.required') ?></p>
+        
+    
+       
     </div>
-</div>
-```
-
-He organizado el código para mejorar la legibilidad y he alineado los botones del formulario. ¡Espero que esto sea lo que buscas!
+    <button type="submit" class="btn btn-primary">Registrar</button>
+    <button type="submit" class="btn btn-danger">Cancelar</button>
+</form>
 
         <?= $this->endSection() ?>
 

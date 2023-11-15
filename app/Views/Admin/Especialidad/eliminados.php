@@ -31,8 +31,8 @@
 
     <div class="card-body">
         <div class="box-header with-border">
-            <a href="<?php echo base_url(); ?>panel/especialidades/nuevo" class="btn btn-primary"><i class="fa fa-plus-circle"></i> Ingresar Especialidad </a>
-            <a href="<?php echo base_url(); ?>panel/especialidades/" class="btn btn-warning"><i class="fas fa-list-ol"></i> Especialidades Activas
+            <a href="<?php echo base_url(); ?>/panel/especialidades/nuevo" class="btn btn-primary"><i class="fa fa-plus-circle"></i> Ingresar Especialidad </a>
+            <a href="<?php echo base_url(); ?>panel/especialidades/" class="btn btn-info"><i class="fas fa-list-ol"></i> Listar Especialidades
             </a>
             <div class="box-tools pull-right">
                 <br>
@@ -71,10 +71,9 @@
                                         <span class="sr-only">Toggle Dropdown</span>
                                     </button>
                                     <div class="dropdown-menu" role="menu">
-                                        <a class="dropdown-item" href="<?= base_url('especialidad/ver/' . $especialidad['idEspecialidad']) ?>">Ver</a>
-                                        <a class="dropdown-item" href="<?= base_url('panel/especialidades/editar/' . $especialidad['idEspecialidad']) ?>">Editar</a>
-                                        <a class="dropdown-item" href="<?= base_url('panel/especialidades/eliminar/' . $especialidad['idEspecialidad']) ?>">Eliminar</a>
-                                        <a class="dropdown-item" href="<?= base_url('panel/especialidades/activar/' . $especialidad['idEspecialidad']) ?>">Activar</a>
+                                        <a class="dropdown-item" href="<?= base_url('Especialidad/edit/' . $especialidad['idEspecialidad']) ?>">Ver</a>
+                                        <a class="dropdown-item" href="#">Editar</a>
+                                        <a class="dropdown-item" href="<?= base_url('panel/especialidades/activar' . $especialidad['idEspecialidad']) ?>">Activar</a>
                                         
                                     </div>
                                 </div>

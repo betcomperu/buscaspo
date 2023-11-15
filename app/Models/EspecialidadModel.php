@@ -13,7 +13,7 @@ class EspecialidadModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['descripcion','sitReg'];
+    protected $allowedFields    = ['descripcion', 'sitReg'];
 
     // Dates
     protected $useTimestamps = false;
@@ -24,15 +24,17 @@ class EspecialidadModel extends Model
 
     // Validation
     protected $reglas    = [
-        'descripcion' => 'required'
-        
-       ];
+        'descripcion' => 'required',
+        'sitReg' => 'required|in_list[0,1]'
+    ];
     protected $reglasmensajes   = [
-        'descripcion' => [
-            
-            'required' => 'El campo descripción es obligatorio'
+        'descripcion' => ['required' => 'El campo Especialidad es obligatorio'],
+        'sitReg' => [
+            'required' => 'Debe hacer una selección',
+            'in_list'  => 'La opción seleccionada para la especialidad no es válida.',
         ]
     ];
+
     protected $skipValidation       = false;
     protected $cleanValidationRules = false;
 

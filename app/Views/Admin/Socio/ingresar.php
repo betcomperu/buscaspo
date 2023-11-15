@@ -28,8 +28,14 @@
             <?= session()->getFlashdata('error') ?>
         </div>
     <?php endif; ?>
+
+    <div class="card-body">
+    
+        <?php
+        echo session()->getFlashdata('info');
+        ?>
     <div class="container">
-        <h1 class="my-5">Formulario de Socios</h1>
+
         <form>
             <div class="row">
                 <div class="col-md-6">

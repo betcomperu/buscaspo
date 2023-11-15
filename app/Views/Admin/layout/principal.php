@@ -127,7 +127,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="<?php echo base_url(); ?>/panel/nuevo" class="nav-link">
+              <a href="<?php echo base_url(); ?>panel/nuevo" class="nav-link">
                 <i class="nav-icon far fa-image"></i>
                 <p>
                   Registro de Socios
@@ -152,7 +152,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/layout/top-nav-sidebar.html" class="nav-link">
+                <a href="<?php echo base_url(); ?>panel/especialidades/nuevo" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Agregar</p>
                 </a>

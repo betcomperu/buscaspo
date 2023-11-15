@@ -42,6 +42,13 @@ $routes->group('',  ['filter'=>'logeo'], function (RouteCollection $routes) {
     $routes->get('/panel/nuevo', 'Admin\Socio::ingresar');
     $routes->get('/panel/eliminados', 'Admin\Socio::eliminados');
     $routes->add('/panel/especialidades', 'Admin\Especialidad::index');
+    $routes->add('/panel/especialidades/nuevo', 'Admin\Especialidad::nuevo');
+    $routes->post('/panel/especialidades/grabar', 'Admin\Especialidad::grabar');
+    $routes->add('panel/especialidades/eliminados', 'Admin\Especialidad::eliminados');
+    $routes->get('panel/especialidades/editar/(:any)', 'Admin\Especialidad::editar/$1');
+    $routes->get('panel/especialidades/eliminar/(:any)', 'Admin\Especialidad::eliminar/$1');
+    $routes->get('panel/especialidades/activar/(:any)', 'Admin\Especialidad::activar/$1');
+   
    
  //   $routes->add('/panel/especialidades', 'Admin\Especialidad::index');
 
