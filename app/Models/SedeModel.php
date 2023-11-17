@@ -38,4 +38,9 @@ class SedeModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+    public function getSedes()
+{
+    return $this->db->table('sede')->get()->getResultArray();
+}
 }

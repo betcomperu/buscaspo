@@ -31,8 +31,8 @@
 
     <div class="card-body">
         <div class="box-header with-border">
-            <a href="<?php echo base_url(); ?>/panel/nuevo" class="btn btn-primary"><i class="fa fa-plus-circle"></i> Ingresar Socio </a>
-            <a href="<?php echo base_url(); ?>/usuarios/eliminados" class="btn btn-warning"><i class="fas fa-list-ol"></i> Eliminados
+            <a href="<?php echo base_url(); ?>panel/nuevo" class="btn btn-primary"><i class="fa fa-plus-circle"></i> Ingresar Socio </a>
+            <a href="<?php echo base_url(); ?>/panel/eliminados" class="btn btn-warning"><i class="fas fa-list-ol"></i> Eliminados
             </a>
             <div class="box-tools pull-right">
                 <br>
@@ -59,6 +59,7 @@
                         <th>Email</th>
                         <th>RNE</th>
                         <th>Tipo Socio</th>
+                        <th>Sede</th>
                         <th>Especialidad</th>
                         <th>Estado</th>
                         <th>Opciones</th>
@@ -70,7 +71,9 @@
                     <?php foreach ($socios as $dato) : ?>
                         <tr>
                             <td><?php echo $dato['idSocio']; ?></td>
-                            <td><?php echo $dato['foto']; ?></td>
+                            <td>
+                                <img src="<?= base_url('uploads') . "/"; ?><?php echo $dato['foto']; ?>" alt="img-responsive" width="80">
+                            </td>
                             <td><?php echo $dato['dni']; ?></td>
                             <td><?php echo $dato['CMP']; ?></td>
                             <td><?php echo $dato['nombre']; ?></td>
@@ -81,12 +84,41 @@
                             <td><?php echo $dato['domicilio']; ?></td>
                             <td><?php echo $dato['email']; ?></td>
                             <td><?php echo $dato['RNE']; ?></td>
-                            <td><?php echo $dato['tipoSocio']; ?></td>
-                            <td><?php echo $dato['especialidad']; ?></td>
-                            <td><?php echo $dato['condicion']; ?></td>
+                            <td>
+                                <?php
+                                $tipoSocioId = $dato['tipoSocio'];
+                                echo isset($sociotipo[$tipoSocioId]) ? $sociotipo[$tipoSocioId] : 'Sin ingresar';
+                                ?>
+                            </td>
+                            <td>
+                                <?php
+                                $sedeId = $dato['sede'];
+                                echo isset($sedes[$sedeId]) ? $sedes[$sedeId] : 'Sin Ingresar';
+                                ?>
+                            </td>
 
                             <td>
-                               
+                                <?php
+                                $especialidadesSeleccionadas = explode(',', $dato['especialidad']);
+                                $especialidadesNombres = array_map(function ($id) use ($especialidadesArray) {
+                                    return isset($especialidadesArray[$id]) ? $especialidadesArray[$id] : 'Especialidad Desconocida';
+                                }, $especialidadesSeleccionadas);
+                                echo implode(', ', $especialidadesNombres);
+                                ?>
+                            </td>
+                            <td> <?php
+                                    // Check the condition
+                                    if ($dato["condicion"] == 1) {
+                                        // If the condition is true, echo "Habilitado"
+                                        echo "Habilitado";
+                                    } else {
+                                        // If the condition is false, echo "No habilitado"
+                                        echo "No habilitado";
+                                    }
+                                    ?>
+
+                            <td>
+
                                 <div class="btn-group">
                                     <button type="button" class="btn btn-primary">Acción</button>
                                     <button type="button" class="btn btn-primary dropdown-toggle dropdown-hover dropdown-icon" data-toggle="dropdown">
@@ -96,7 +128,7 @@
                                         <a class="dropdown-item" href="<?= base_url('Usuarios/edit/' . $dato['idSocio']) ?>">Ver</a>
                                         <a class="dropdown-item" href="#">Editar</a>
                                         <a class="dropdown-item" href="#">Eliminar</a>
-                                        
+
                                     </div>
                                 </div>
 
@@ -120,6 +152,7 @@
                         <th>Domicilio</th>
                         <th>Email</th>
                         <th>RNE</th>
+                        <th>Sede</th>
                         <th>Tipo Socio</th>
                         <th>Especialidad</th>
                         <th>Estado</th>

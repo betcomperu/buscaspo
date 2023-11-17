@@ -48,4 +48,9 @@ class EspecialidadModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+    public function getEspecialidades()
+    {
+        return $this->db->table('especialidad')->get()->getResultArray();
+    }
 }

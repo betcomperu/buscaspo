@@ -87,8 +87,6 @@
                     </div>
 
 
-
-
                 </div>
                 <div class="col-md-6">
                     <div class="mb-3">
@@ -117,16 +115,19 @@
                     </div>
                     <div class="mb-3">
                         <label for="sede" class="form-label">Tipo de Socio</label>
-                        <select class="form-control" name="tiposocio" id="tiposocio">
-                            <option value="" disabled selected>Seleccione el tipo</option>
+                        <select class="form-control" name="tipoSocio" id="tipoSocio">
+                        <option value="" disabled selected>Seleccione el tipo Socio</option>
                             <?php foreach ($tiposocio as $tipo) : ?>
                                 <option value="<?php echo $tipo['idTipoSocio']; ?>">
                                     <?php echo $tipo['descripcion']; ?>
                                 </option>
-                            <?php endforeach; ?>
+                            <?php endforeach; ?>          
+                      
+                                
+
+                  
                         </select>
                         <p class="text text-danger"><?= session('errors.tiposocio')?></p>
-
                     </div>
                     <div class="mb-3">
                         <label for="domicilio" class="form-label">Domicilio</label>

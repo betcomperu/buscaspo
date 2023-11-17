@@ -38,4 +38,9 @@ class TipoSocio extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+    public function getTipoSocios()
+{
+    return $this->db->table('tiposocio')->get()->getResultArray();
+}
 }

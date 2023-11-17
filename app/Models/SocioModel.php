@@ -13,8 +13,8 @@ class SocioModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['dni','CMP','apPaterno','apMaterno','nombre','fecNac','domicilio','RNE','telf','email','codUbigeo','tipoSocio',
-                                    'foto','condicion','fecha_creacion','fecha_edicion'];
+    protected $allowedFields    = ['dni','CMP','apPaterno','apMaterno','nombre','especialidad','fecNac','sede','domicilio','RNE','telef','email','codUbigeo','tipoSocio',
+                                    'foto','condicion'];
 
     // Dates
     protected $useTimestamps = false;
@@ -49,5 +49,9 @@ class SocioModel extends Model
             ->where('socio.condicion', 1) // Agregar la tabla a la condición.
             ->findAll();
     }
-    
+  
+
+
+
+
 }
