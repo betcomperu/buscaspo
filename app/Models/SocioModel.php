@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use CodeIgniter\Model;
+use CodeIgniter\Database\BaseConnection;
 
 class SocioModel extends Model
 {
@@ -49,6 +50,14 @@ class SocioModel extends Model
             ->where('socio.condicion', 1) // Agregar la tabla a la condición.
             ->findAll();
     }
+    public function getCantSocios(): int
+{
+    $builder = $this->db->table('socio');
+    $builder->where('condicion', 1);
+    $result = $builder->countAllResults();
+
+    return $result;
+}
   
 
 

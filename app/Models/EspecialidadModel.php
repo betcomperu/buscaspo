@@ -51,6 +51,25 @@ class EspecialidadModel extends Model
 
     public function getEspecialidades()
     {
+       // return $this->db->table('especialidad')->get()->getResultArray();
+        return $this->db->table('especialidad')->where('sitReg', 1)->get()->getResultArray();
+    }
+    public function todasEspecialidades()
+    {
+       // return $this->db->table('especialidad')->get()->getResultArray();
         return $this->db->table('especialidad')->get()->getResultArray();
     }
+    public function obtenerDescripcionEspecialidad($idEspecialidad)
+    {
+        $query = $this->select('descripcion')
+            ->where('idEspecialidad', $idEspecialidad)
+            ->get();
+
+        if ($query->numRows() > 0) {
+            return $query->getRow()->descripcion;
+        } else {
+            return 'Especialidad no encontrada';
+        }
+    }
+    
 }

@@ -32,11 +32,12 @@ class Socio extends BaseController
 
         //  $socios = $this->SocioModel->select('*')->where('condicion', $condicion)->findAll();
         $tiposocio = $this->TipoSocio->getTipoSocios();
+        $todasespecialidades = $this->EspecialidadModel->todasEspecialidades();
         $especialidad = $this->EspecialidadModel->getEspecialidades();
         $especialidadesArray = [];
         foreach ($especialidad as $especial) {
             $especialidadesArray[$especial['idEspecialidad']] = $especial['descripcion'];
-        } //dd($especialidadesArray);
+        } 
         $sedes = $this->Sede->getSedes();
         $sedesArray = [];
         foreach ($sedes as $sede) {
@@ -46,7 +47,9 @@ class Socio extends BaseController
         foreach ($tiposocio as $socio) {
             $sociotipo[$socio['idTipoSocio']] = $socio['descripcion'];
         }
-        //  
+        // 
+        $getCantSocios = $this->SocioModel->getCantSocios();
+        $dato['especialidades'] = $especialidadesArray;
         $data = [
             'titulo' => "Socios SPO",
             'sociotipo' => $sociotipo,
@@ -54,9 +57,11 @@ class Socio extends BaseController
             'socios' => $this->SocioModel->select('*')->where('condicion', $condicion)->findAll(),
             'tiposocio' => $tiposocio,
             'espe' => $especialidad,
-            'sedes' => $sedesArray
+            'sedes' => $sedesArray,
+            'todasEspecialidades'=> $todasespecialidades,
+            'getCantSocios' => $getCantSocios
         ];
-        //dd($data);
+    
         return view('Admin/Socio/index', $data);
     }
     public function eliminados($condicion = 2)
@@ -244,13 +249,45 @@ class Socio extends BaseController
 
 
 
-    public function ver()
+    public function ver($id=null)
     {
+        $tiposocio = $this->TipoSocio->getTipoSocios();
+        $especialidad = $this->EspecialidadModel->getEspecialidades();
+        $especialidadesArray = [];
+        foreach ($especialidad as $especial) {
+            $especialidadesArray[$especial['idEspecialidad']] = $especial['descripcion'];
+        } //dd($especialidadesArray);
+        $sedes = $this->Sede->getSedes();
+        $sedesArray = [];
+        foreach ($sedes as $sede) {
+            $sedesArray[$sede['idSede']] = $sede['sede']; // Ajusta según la estructura de tus datos
+        }
+        $sociotipo = [];
+        foreach ($tiposocio as $socio) {
+            $sociotipo[$socio['idTipoSocio']] = $socio['descripcion'];
+        }
+        // 
+        $getCantSocios = $this->SocioModel->getCantSocios();
+
+        $socio = $this->SocioModel->select('*')->where('idSocio', $id)->first($id);
+     //   dd($socio);
+     $data = [
+        'titulo'=> "Perfil de socio",
+        'socio' => $socio,
+        'sociotipo' => $sociotipo,
+        'especialidadesArray' => $especialidadesArray,
+        'tiposocio' => $tiposocio,
+        'espe' => $especialidad,
+        'sedes' => $sedesArray,
+        'getCantSocios' => $getCantSocios
+     ];
+        return view('Admin/Socio/ver', $data);
     }
 
     public function editar()
     {
-        //
+        //crear la funcion editar
+      
         return view('Admin/Socio/index');
     }
     public function grabaeditar()

@@ -40,6 +40,7 @@ $routes->group('',  ['filter'=>'logeo'], function (RouteCollection $routes) {
     $routes->get('/panel/usuario', 'Admin\Usuario::index');
     $routes->get('/panel/socio', 'Admin\Socio::index');
     $routes->get('panel/nuevo', 'Admin\Socio::ingresar');
+    $routes->get('panel/ver/(:any)', 'Admin\Socio::ver/$1');
     $routes->post('/panel/grabaingreso', 'Admin\Socio::grabaingreso');
     $routes->add('panel/eliminados', 'Admin\Socio::eliminados');
     $routes->add('/panel/especialidades', 'Admin\Especialidad::index');

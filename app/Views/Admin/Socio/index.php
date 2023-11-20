@@ -72,28 +72,27 @@
                         <tr>
                             <td><?php echo $dato['idSocio']; ?></td>
                             <td>
-                                <img src="<?= base_url('uploads') . "/"; ?><?php echo $dato['foto']; ?>" alt="img-responsive" width="80">
+                                <img src="<?= base_url('uploads/') . $dato['foto']; ?>" alt="img-responsive" width="80">
+
                             </td>
                             <td><?php echo $dato['dni']; ?></td>
                             <td><?php echo $dato['CMP']; ?></td>
                             <td><?php echo $dato['nombre']; ?></td>
                             <td><?php echo $dato['apPaterno']; ?></td>
                             <td><?php echo $dato['apMaterno']; ?></td>
-                            <td><?php echo $dato['telef']; ?></td>
-                            <td><?php echo $dato['fecNac']; ?></td>
+                            <td><?php echo !empty($dato['telef']) ? $dato['telef'] : 'Aun sin registro' ?></td>
+                            <td><?php echo !empty($dato['fecNac']) ? $dato['fecNac'] : 'Aun sin registro' ?></td>
                             <td><?php echo $dato['domicilio']; ?></td>
                             <td><?php echo $dato['email']; ?></td>
-                            <td><?php echo $dato['RNE']; ?></td>
-                            <td>
-                                <?php
+                            <td><?php echo isset($dato['RNE']) ? $dato['RNE'] : "Sin ingreso"; ?></td>
+                            <td><?php
                                 $tipoSocioId = $dato['tipoSocio'];
-                                echo isset($sociotipo[$tipoSocioId]) ? $sociotipo[$tipoSocioId] : 'Sin ingresar';
+                                echo isset($sociotipo[$tipoSocioId]) ? $sociotipo[$tipoSocioId] : 'Sin ingreso';
                                 ?>
                             </td>
-                            <td>
-                                <?php
+                            <td><?php
                                 $sedeId = $dato['sede'];
-                                echo isset($sedes[$sedeId]) ? $sedes[$sedeId] : 'Sin Ingresar';
+                                echo isset($sedes[$sedeId]) ? $sedes[$sedeId] : 'Sin Ingreso';
                                 ?>
                             </td>
 
@@ -105,19 +104,23 @@
                                 }, $especialidadesSeleccionadas);
                                 echo implode(', ', $especialidadesNombres);
                                 ?>
+
                             </td>
-                            <td> <?php
-                                    // Check the condition
-                                    if ($dato["condicion"] == 1) {
-                                        // If the condition is true, echo "Habilitado"
-                                        echo "Habilitado";
-                                    } else {
-                                        // If the condition is false, echo "No habilitado"
-                                        echo "No habilitado";
-                                    }
-                                    ?>
+                            <td>
+                                <?php
+                                // Check the condition
+
+                                if ($dato["condicion"] == 1) {
+                                    // If the condition is true, echo "Habilitado"
+                                    echo "Habilitado";
+                                } else {
+                                    // If the condition is false, echo "No habilitado"
+                                    echo "No habilitado";
+                                }
+                                ?>
 
                             <td>
+
 
                                 <div class="btn-group">
                                     <button type="button" class="btn btn-primary">Acción</button>
@@ -125,7 +128,7 @@
                                         <span class="sr-only">Toggle Dropdown</span>
                                     </button>
                                     <div class="dropdown-menu" role="menu">
-                                        <a class="dropdown-item" href="<?= base_url('Usuarios/edit/' . $dato['idSocio']) ?>">Ver</a>
+                                        <a class="dropdown-item" href="<?= base_url('panel/ver/' . $dato['idSocio']) ?>">Ver</a>
                                         <a class="dropdown-item" href="#">Editar</a>
                                         <a class="dropdown-item" href="#">Eliminar</a>
 
@@ -176,8 +179,8 @@
                     'pdfHtml5'
                 ],
                 "lengthMenu": [
-                    [10, 25, 50, -1],
-                    ['10 Resultados', '25 Resultados', '50 Resultados', 'Motrar Todos']
+                    [5, 10, 25, 50, -1],
+                    ['05 Resultados', '10 Resultados', '25 Resultados', '50 Resultados', 'Motrar Todos']
                 ],
                 "buttons": {
                     "pageLength": {
