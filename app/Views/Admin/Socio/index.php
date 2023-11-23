@@ -81,7 +81,8 @@
                             <td><?php echo $dato['apPaterno']; ?></td>
                             <td><?php echo $dato['apMaterno']; ?></td>
                             <td><?php echo !empty($dato['telef']) ? $dato['telef'] : 'Aun sin registro' ?></td>
-                            <td><?php echo !empty($dato['fecNac']) ? $dato['fecNac'] : 'Aun sin registro' ?></td>
+                            <td><?php echo !empty($dato['fecNac']) ? date('d-m-Y', strtotime($dato['fecNac'])) : 'Aun sin registro';
+                                ?></td>
                             <td><?php echo $dato['domicilio']; ?></td>
                             <td><?php echo $dato['email']; ?></td>
                             <td><?php echo isset($dato['RNE']) ? $dato['RNE'] : "Sin ingreso"; ?></td>
@@ -129,8 +130,8 @@
                                     </button>
                                     <div class="dropdown-menu" role="menu">
                                         <a class="dropdown-item" href="<?= base_url('panel/ver/' . $dato['idSocio']) ?>">Ver</a>
-                                        <a class="dropdown-item" href="#">Editar</a>
-                                        <a class="dropdown-item" href="#">Eliminar</a>
+                                        <a class="dropdown-item" href="<?= base_url('panel/editar/' . $dato['idSocio']) ?>">Editar</a>
+                                        <a class="dropdown-item" href="<?= base_url('panel/eliminar/' . $dato['idSocio']) ?>">Eliminar</a>
 
                                     </div>
                                 </div>

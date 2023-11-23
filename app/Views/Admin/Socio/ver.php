@@ -32,7 +32,7 @@
     <?php endif; ?>
 
 <div class="container mt-5">
-    <h2>Datos Personales</h2>
+    <h2>Datos Personales  FFFFF</h2>
     <br>
     <div class="row">
 
